@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <% include partials/metaTags.ejs %>
+        <link rel='stylesheet' href='/stylesheets/styleSignUp.css' />
+        <title>Shipt Ecommerce Application | SignUp</title>
+        <% include partials/headTags.ejs %>
+        <script src= "../angularjs/signUpController.js"></script>
+    </head>
+    <body ng-app="signUpApp" ng-controller="signUpController">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand logotext" href="#" style = " color:#E43B2C;">Shipt Ecommerce Application </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        
+                    </ul>
+                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/logIn"><span class="glyphicon glyphicon-log-in"
+                                 aria-hidden="true"></span> Log In</a></li>
+                        <li class="active"><a href="/signUp">
+                            <span class="glyphicon glyphicon-new-window"></span> Sign Up</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+            <div class="container">
+                <div class="col-xs-6 col-xs-offset-3">
+                    <form name= "form" novalidate>
+                        <fieldset style="min-height:100px;">
+                        <legend>Personal Details</legend>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="name">Name</label>
+                            <span class="col-sm-4 asterisk_input">  </span>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="name" ng-model="name" placeholder="Name" name="name" ng-required="true">
+                                <p class="error" ng-show="form.name.$invalid && form.name.$touched">You must fill out your name.</p>
+                            </div>
+                        </div><br/><br/>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="email">Email</label>
+                            <span class="col-sm-4 asterisk_input">  </span>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="email" ng-model="email" placeholder="Email" name = "email" ng-required="true">
+                                <p class="error" ng-show="form.email.$invalid && form.email.$touched">You must fill out correct email.</p>
+                            </div>
+                        </div><br/><br/>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="password">Password</label>
+                            <span class="col-sm-4 asterisk_input">  </span>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="password" ng-model="password" placeholder="Password" name = "password" ng-required="true">
+                                <p class="error" ng-show="form.password.$invalid && form.password.$touched">You must fill out your password.</p>
+                            </div>
+                        </div><br/><br/>
+                        <div class="col-md-7 col-md-offset-3">
+                            <div class="col-md-2 col-md-offset-4">
+                                <button type="submit" ng-click="signUp()" class="btn btn-success btn-lg">Sign Up</button>
+                            </div>
+                        </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        <script src="../js/bootstrap.min.js"></script>
+    </body>
+</html>

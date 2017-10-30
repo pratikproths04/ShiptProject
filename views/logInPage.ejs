@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <% include partials/metaTags.ejs %>
+        <link rel='stylesheet' href='/stylesheets/styleLogIn.css' />
+        <title>Shipt Ecommerce Application | LogIn</title>
+        <% include partials/headTags.ejs %>
+    	<script src= "../angularjs/logInController.js"></script>
+    </head>
+    <body  ng-app="logInApp" ng-controller="logInController">
+        <nav class="navbar navbar-default navbar-custom navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand logotext" href="#" style="color:#E43B2C;">Shipt Ecommerce Application</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        
+                    </ul>
+                     <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#"><span class="glyphicon glyphicon-log-in"
+                                 aria-hidden="true"></span> Log In</a></li>
+                        <li><a href="/signUp">
+                            <span class="glyphicon glyphicon-new-window"></span> Sign Up</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+            <div id="login-widget" class="panel col-xs-3 pull-right">
+                <form id="loginform" class="form-horizontal" role="form" novalidate>
+                   <div class="panel-heading text-center">
+                      <h5 class="text-uppercase" style="color: white;"><strong>Login to your account</strong></h5>
+                   </div>
+                   <div class="panel-body">
+                      <label for="login-email" style="color: white;">Email</label>
+                      <div class="input-group">
+                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                         <input id="email" type="text" class="form-control input-lg" ng-model="email" name="email" placeholder="email"> 
+                         <p class="error" ng-show="form.email.$invalid && form.email.$touched">You must fill out your email.</p>
+                      </div>
+                      <label for="login-email" style="color: white;">Password</label>
+                      <div class="input-group">
+                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                         <input id="password" type="password" class="form-control input-lg" ng-model="password" name="password" placeholder="password">
+                         <p class="error" ng-show="form.password.$invalid && form.password.$touched">You must fill out your password.</p>
+                      </div>
+                   </div>
+                   <div class="panel-footer text-center" style="background-color: #55518a;">
+                      <div class="login-btn">
+                         <button type="submit" ng-click="logIn()" ng-disabled="form.$invalid" class="btn btn-ui btn-lg btn-block mrg-btm-10"><i class="fa fa-play-circle"></i>Log In</button>
+                         <a href="#" style="color: white;"><small>Forgot Username or Password?</small></a>
+                      </div>
+                      <!-- <a href="#" class="facebook"><i class="fa fa-lg fa-facebook-square"></i> Login with Facebook</a>        -->      
+                   </div>
+                </form>
+            </div>
+        <script src="../js/bootstrap.min.js"></script>
+    </body>
+</html>

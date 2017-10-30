@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Bootstrap -->
+<link rel='stylesheet' href="/stylesheets/bootstrap.css"/>
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- AngularJS -->
+<script src= "../js/angular.min.js"></script>
+<script src="/angularjs/mainCtrl.js"></script>
+<!-- Bootstrap -->
+<script src="/js/bootstrap.js"></script>
+<title>Products</title>
+</head>
+<body>
+	<div class="navbar-wrapper">
+		<div class="container">
+
+			<nav class="navbar navbar-inverse navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">Shipt Project</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#">Home</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+		</div>
+	</div>
+	<div class="container" ng-app="shiptApp" ng-controller="categoryCtrl">
+		<br/><br/>
+		<div class="col-xs-2">
+			<table class="table table-responsive table-condensed table-hover table-bordered" ng-if="showCategories == true">
+				<thead>
+				<tr>
+					<th>
+							Categories
+					</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="category in categories">
+					<td><a href="#" ng-click="showCategoryWiseProducts(category.id)">{{category.categoryName}}</a></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-10">
+			<table class="table table-responsive table-condensed table-hover table-bordered" ng-if="showProducts == true">
+				<thead>
+				<tr>
+					<th>
+						Products
+					</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="product in products">
+					<td><a href="#" ng-click="addItemsToCart(product.productName)">{{product.productName}}</a></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

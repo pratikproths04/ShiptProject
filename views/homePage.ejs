@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include partials/metaTags.ejs %>
+        <link rel='stylesheet' href='/stylesheets/styleHome.css' />
+        <title>Shipt Ecommerce Application | Home</title>
+	    <% include partials/headTags.ejs %>
+	    <script src="../angularjs/homeController.js"> </script>
+	</head>
+	<body ng-app="homeApp" ng-controller="categoryCtrl">
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand logotext" href="#" style = " color:#E43B2C;">Shipt Ecommerce Application</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        
+                    </ul>
+                     <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#"><span class="glyphicon glyphicon-home"
+                                 aria-hidden="true"></span> Home</a></li>
+                        <li><a href="/logOut">
+                            <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <br/><br/>
+            <div class="col-xs-2">
+                <table class="table table-responsive table-condensed table-hover table-bordered" ng-if="showCategories == true">
+                    <thead>
+                    <tr>
+                        <th>
+                            Categories
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="category in categories">
+                        <td><a href="#" ng-click="showCategoryWiseProducts(category.id)">{{category.categoryName}}</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-5" ng-if="showProducts == true">
+                <table class="table table-responsive table-condensed table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>
+                            Products
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="product in products">
+                        <td>{{product.productName}}
+                            <button type="button" class="pull-right btn btn-success"  ng-click="addItemToCart(product.id, product.productName)">Add To Cart</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-4">
+                <h2>CART</h2>
+                <p>You checked out following products: </p>
+                <table class="table table-responsive table-condensed table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>
+                            Products
+                        </th>
+                        <th>
+                            Quantity (Editable by double click)
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="cartItem in cart">
+                        <td>{{cartItem.name}}</td>
+                        <td><span ng-hide="cartItem.editing" ng-dblclick="editItem(cartItem)">{{cartItem.quantity}}</span>
+                            <input ng-show="cartItem.editing" ng-model="cartItem.quantity" ng-blur="doneEditing(cartItem)" autofocus /></td>
+                        <td><button type="button" class="pull-left btn btn-success"  ng-click="deleteItemFromCart(cartItem.id)">Delete From Cart</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a class="btn btn-info" href="#" ng-disabled="cart.length<1" confirmed-click="order(cart)" ng-confirm-click="Do you confirm?">Order</a>
+            </div>
+        </div>
+	</body>
+</html>
